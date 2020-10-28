@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+</head>
+<body>
+
+<div>
+    <h1>The Goods Page</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>remark</th>
+            <th>createdTime</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">Data is loading ....</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function () {
+        let url ="/goods/doFindGoods";
+        $.getJSON(url,function (res) {
+            console.log(res);
+            doHandleQueryResponseResult(res);
+        })
+    })
+    function doHandleQueryResponseResult(result){
+        let tBody=$("tbody");
+        tBody.empty();//innerHTML=""
+        result.forEach(function (item) {
+            tBody.append(`<tr>
+                              <td>${item.id}</td>
+                              <td>${item.name}</td>
+                              <td>${item.remark}</td>
+                              <td>${item.createdTime}</td>
+                          </tr>>`);
+
+        })
+    }
+
+</script>
+</body>
+</html>

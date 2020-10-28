@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求</title>
+</head>
+<body>
+    <div>
+        <h1>the Ajax_01 Page</h1>
+        <fieldset>
+            <legend>Ajax 异步请求</legend>
+            <button onclick="doAjaxGet()">Ajax Get Request</button>
+            <span id="resultId">Loading data...</span>
+        </fieldset>
+    </div>
+
+</body>
+<script type="text/javascript">
+    function doAjaxGet() {
+        //入口对象发送异步请求，处理响应结果都是通过此对象
+        var xhr=new XMLHttpRequest();
+        //设置状态监听
+        xhr.onr
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4&&xhr.status==200){
+                debugger;
+                var result=xhr.responseText;
+            document.getElementById("resultId").innerHTML=result;
+            }
+        }
+
+
+        //默认就是true,如果false是同步请求
+        xhr.open("GET","http://localhost/doAjaxGet",true);
+        xhr.send(null);
+
+        console.log("do other....");
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="09-springboot-webmvc" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="02_maven" target="1.8" />
+      <module name="03-spring-inittializr" target="1.8" />
+      <module name="04_springboot_start" target="1.8" />
+      <module name="05-springboot-features" target="1.8" />
+      <module name="06_springboot_di" target="1.8" />
+      <module name="07-springboot-kikaricp" target="1.8" />
+      <module name="08-springboot-mybatis" target="1.8" />
+      <module name="09-springboot-webmvc" target="1.8" />
+      <module name="10_springboot_goods" target="1.8" />
+      <module name="10_springboot_goods_vue" target="1.8" />
+      <module name="11_springboot_exception" target="1.8" />
+      <module name="12_springboot_response" target="1.8" />
+      <module name="13_springboot_web_ajax" target="1.8" />
+      <module name="14_springboot_activity" target="1.8" />
+      <module name="15_springboot_dbpmx" target="1.8" />
+      <module name="16_springboot_aop" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="03-spring-inittializr" options="-parameters" />
+      <module name="04_springboot_start" options="-parameters" />
+      <module name="05-springboot-features" options="-parameters" />
+      <module name="06_springboot_di" options="-parameters" />
+      <module name="07-springboot-kikaricp" options="-parameters" />
+      <module name="08-springboot-mybatis" options="-parameters" />
+      <module name="09-springboot-webmvc" options="-parameters" />
+      <module name="10_springboot_goods" options="-parameters" />
+      <module name="10_springboot_goods_vue" options="-parameters" />
+      <module name="11_springboot_exception" options="-parameters" />
+      <module name="12_springboot_response" options="-parameters" />
+      <module name="13_springboot_web_ajax" options="-parameters" />
+      <module name="14_springboot_activity" options="-parameters" />
+      <module name="15_springboot_dbpmx" options="-parameters" />
+      <module name="16_springboot_aop" options="-parameters" />
+    </option>
+  </component>
+</project>

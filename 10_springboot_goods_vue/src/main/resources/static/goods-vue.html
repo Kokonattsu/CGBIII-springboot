@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <style>
+        ul>li{ list-style-type: none}
+    </style>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="app" class="container">
+    <h1>The Goods Page</h1>
+
+    <form >
+        <ul>
+            <li><input type="hidden" v-model="id"></li><!--隐藏的表单-->
+            <li>name</li>
+            <li><input v-model="name"></li>
+            <li>remark</li>
+            <li><textarea v-model="remark" rows="3" cols="50"></textarea></li>
+            <li><input type="button" @click="doSaveOrUpdateGoods" value="Save Goods"></li>
+        </ul>
+    </form>
+
+    <table class="table table-hover table table-condensed" style="width: 60%">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>remark</th>
+            <th>createdTime</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="g in goods">
+                <td>{{g.id}}</td>
+                <td>{{g.name}}</td>
+                <td>{{g.remark}}</td>
+                <td>{{g.createdTime}}</td>
+                <td><a @click="doDeleteById(g.id)">删除</a></td>
+                <td><a @click="doFindById(g.id)">修改</a></td><!--a @click才能接收g.id-->
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/axios.min.js"></script>
+<script src="js/vue.js"></script>
+<script>
+    var vue=new Vue({
+        el:"#app",
+        data:{//用于同步页面数据
+            goods:{},
+            result:"",
+            id:"",
+            name:"",
+            remark:"",
+        },
+        methods:{
+            //查询
+            doFindGoods() {
+                let url="/goods/doFindGoods";
+                axios.get(url).then(function (res) {
+                    console.log(res);
+                    this.vue.goods=res.data;
+                });
+            },
+            //根据id查询
+            doFindById(id){
+                let url=`/goods/doFindById/${id}`;
+                axios.get(url).then(function (res) {
+                    this.vue.id=res.data.id;
+                    this.vue.name=res.data.name;
+                    this.vue.remark=res.data.remark;
+                    console.log(res.data);
+                });
+            },
+            //删除
+            doDeleteById(id) {
+                let url="/goods/doDeleteById/"+id;
+                axios.get(url).then(function (res) {
+                    console.log(res.data)
+                    this.vue.doFindGoods();
+
+                })
+            },
+            //添加
+            doSaveOrUpdateGoods() {
+                let url=this.id?"/goods/doUpdateGoods":"/goods/doSaveGoods";
+                debugger;
+                let params={id:this.id,name:this.name,remark: this.remark};
+                axios.post(url,params).then(function (res) {
+                    console.log(res.data);
+
+                    this.vue.id="";
+                    this.vue.name="";
+                    this.vue.remark="";
+                    this.vue.doFindGoods();
+                });
+
+            }
+        },
+        mounted() { //mounted属性是一个函数
+            this.doFindGoods();
+        }
+    });
+</script>
+</body>
+</html>

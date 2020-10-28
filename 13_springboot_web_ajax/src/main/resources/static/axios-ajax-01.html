@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    <div>
+        <button onclick="doGet()">axios.Get()</button><br>
+        <button onclick="doparamsGet()">axios.paramGet()</button>
+        <button onclick="doPost()">axios.Post()</button>
+        <br>
+        <input type="text" id="msgId" >
+        <div class="result"></div>
+    </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    //无参的get请求
+    function doGet() {
+        let url="http://localhost/doGet";
+        axios.get(url).then(function (res) {
+            document.querySelector(".result").innerHTML=
+                JSON.stringify(res.data);//转成json字符串
+        })
+    }
+
+    //含参get请求
+    function doparamsGet() {
+        let url="http://localhost/doAjax";
+        let params={params:{"msg":document.getElementById("msgId").value}};
+        axios.get(url,params)
+        .then(function (res) {
+            document.querySelector(".result").innerHTML=
+                JSON.stringify(res.data);
+            console.log(res)
+        })
+    }
+
+    //post请求
+    function doPost() {
+        let url="http://localhost/doPostJSON";
+        let params={"msg":document.getElementById("msgId").value};
+        axios.post(url,params)
+            .then(function (res) {
+                document.querySelector(".result").innerHTML=
+                    res.data;
+                console.log(params)
+            })
+    }
+
+</script>
+</html>

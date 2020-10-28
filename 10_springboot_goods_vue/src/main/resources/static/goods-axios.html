@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+</head>
+<body>
+
+<div>
+    <h1>The Goods Page</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>remark</th>
+            <th>createdTime</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">Data is loading ....</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/axios.min.js"></script>
+<script>
+    window.onload=function(){
+        let url="/goods/doFindGoods";
+        axios.get(url).then(function(result){
+            console.log(result.data);
+            doHandleQueryResponseResult(result.data);
+        });
+    }
+
+
+    function doHandleQueryResponseResult(data){
+        debugger;
+        let tBody=document.querySelector("tbody");
+        tBody.innerHTML="";
+        data.forEach(function(item) {
+            let tr=document.createElement("tr");
+            let td=document.createElement("td");
+            td.innerText=item.id;
+            tr.appendChild(td);
+
+            td=document.createElement("td");
+            td.innerText=item.name;
+            tr.appendChild(td);
+
+            td=document.createElement("td");
+            td.innerText=item.remark;
+            tr.appendChild(td);
+
+            td=document.createElement("td");
+            td.innerText=item.createdTime;
+            tr.appendChild(td);
+
+            tBody.appendChild(tr)
+
+
+            // let tr=`<tr>
+            //
+            //         </tr>`
+            // tBoby.append(tr)
+        });
+    }
+</script>
+</body>
+</html>

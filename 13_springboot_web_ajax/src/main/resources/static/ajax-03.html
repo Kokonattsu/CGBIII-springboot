@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Ajax.js"></script>
+</head>
+<body>
+<div>
+    <h1>The Ajax 02 Page</h1>
+    <fieldset>
+        <legend>Ajax 表单请求</legend>
+        <form enctype="application/x-www-form-urlencoded">
+            <input type="text" name="name" id="nameId" onblur="doCheck()"/>
+            <button type="button" onclick="doSave()">Save</button>
+            <button type="button" onclick="doDelete()">Delete</button>
+        </form>
+        <span id="result"></span>
+    </fieldset>
+</div>
+</body>
+<script>
+    //发送Ajax请求检查name是否存在
+    function doCheck() {
+        //1.创建xhr对象；2.设置监听事件；3.建立get连接;4.发送请求
+        //debugger;
+        let url ="http://localhost/doCheck";
+        let params=`name=${document.getElementById("nameId").value}`;
+        doAjaxGet(url,params,function(res){
+            document.getElementById("result").innerHTML=res;
+        });
+    }
+
+    //保存name
+    function doSave() {
+        debugger;
+        let name=document.getElementById("nameId").value;
+        let url="http://localhost/doSave"
+        let params=`name=${name}`;
+        doAjaxPost(url,params,function (res) {
+            document.getElementById("result").innerText=res;
+        })
+    }
+
+    //删除全部的name
+    function doDelete() {
+        let url="http://localhost/doDelete";
+        doAjaxGet(url,null,function (res) {
+           document.getElementById("result").innerHTML=res;
+        });
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cy.dao.GoodsMapper">
+
+    <!--  查询所有  -->
+    <select id="selectAll" resultType="com.cy.pojo.Goods">
+        SELECT * FROM tb_goods;
+    </select>
+
+    <!--  添加  -->
+    <insert id="insert" parameterType="com.cy.pojo.Goods" statementType="PREPARED">
+        INSERT INTO
+        tb_goods (id,NAME,remark,CreatedTime)
+        VALUES(NULL,#{Name},#{Remark},NOW());
+    </insert>
+
+    <!--  修改  -->
+    <update id="update" parameterType="com.cy.pojo.Goods" statementType="PREPARED">
+        UPDATE tb_goods
+        SET
+        name=#{Name},remark=#{Remark}
+        WHERE
+        id=#{Id};
+    </update>
+
+    <!--   根据主键删除 -->
+    <delete id="deleteById" parameterType="Integer" statementType="PREPARED">
+        DELETE FROM tb_goods WHERE id=#{goodId}
+    </delete>
+</mapper>

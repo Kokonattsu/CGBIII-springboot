@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h1>The Ajax 02 Page</h1>
+    <fieldset>
+        <legend>Ajax 表单请求</legend>
+        <form enctype="application/x-www-form-urlencoded">
+            <input type="text" name="name" id="nameId" onblur="doCheck()"/>
+            <button type="button" onclick="doSave()">Save</button>
+        </form>
+        <span id="result"></span>
+    </fieldset>
+</div>
+</body>
+<script>
+    //发送Ajax请求检查name是否存在
+    function doCheck() {
+        //1.创建xhr对象；2.设置监听事件；3.建立get连接;4.发送请求
+        debugger;
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4&&xhr.status==200){
+                    //debugger;
+                    document.getElementById("result").innerHTML=
+                        xhr.responseText;
+            }
+        }
+        var name=document.forms[0].name.value;
+        console.log("name=",name);
+        let url="http://localhost/doCheck?name="+name;
+        xhr.open("GET",url,true)
+        xhr.send(null);
+
+        //var url="http:localhost/doCheck/";
+        //xhr.open("POST",url,true);
+        //xhr.send(name=name);
+        //xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>goods</title>
+</head>
+<body>
+<h1>商品页</h1>
+<table border="1px">
+    <thead>
+    <th>商品编号</th>
+    <th>商品名称</th>
+    <th>商品描述</th>
+    <th>创建时间</th>
+    <th>修改商品</th>
+    <th>删除商品</th>
+    </thead>
+    <tbody>
+    <tr th:each="g:${list}">
+        <td th:text="${g.Id}"></td>
+        <td th:text="${g.Name}"></td>
+        <td th:text="${g.remark}"></td>
+        <td th:text="${#dates.format(g.createdTime,'yyyy-MM-dd HH:mm')}"></td>
+        <td>修改</td>
+        <td><a href="/delete/9">删除</a></td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

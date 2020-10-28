@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+</head>
+<body>
+<div>
+    <button type="button" onclick="doAjax()">$.Ajax()</button>
+    <button type="button" onclick="doAjaxGet()">$.get()</button>
+    <button type="button" onclick="doGetJson()">$.getJson()</button>
+    <button type="button" onclick="doPost()">$.Post()</button>
+    <button type="button" onclick="doPost2()">$.Post2()</button>
+    <button type="button" onclick="doAjaxLoad()">$("#selecor").Load()</button>
+    <div id="result"></div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script>
+    function doAjax() {
+        let url="http://localhost/doAjax/";
+        let params="msg=hallo";
+        $.ajax({
+            type:"GET",
+            url:url,
+            data:params,
+            dataType:"Text",//响应类型
+            async:true,     //异步
+            success:function (res) {//readState==4&status==200
+                $("#result").html(res);
+            },
+            error:function (e) {//readState==4&status!=200
+                $("#result").html(e);
+            }
+
+        })
+    }
+
+    //发送get请求
+    function doAjaxGet() {
+        let url="http://localhost/doGet";
+        let params='';
+        $.get(url,params,function (res) {
+            console.log(res);
+        },"Text");//第四参数是响应类型，"Test"返回字符串，"JSON"会把返回值封装成JSON对象（默认）
+
+    }
+
+    //getJson
+    function doGetJson() {
+        let url="http://localhost/doGet";
+        let params='';
+        $.getJSON(url,params,function (res) {
+            console.log(res);
+        });
+    }
+
+    //Post请求
+    function doPost() {
+        let url="http://localhost/doPost";
+        //let params="id=1&name=xiaomi&title=111";
+        let params={id:2,name:"dami",letter:222};
+        $.post(url,params,function (res) {
+            $("#result").html(res);
+        });
+    }
+
+    //AjaxPostJSON
+    function doPost2() {
+        let url ="http://localhoost/doPostJSON";
+        let params={"id":"3","name":"huawei","letter": "3333"};
+        debugger;
+        $.ajax({
+            type: "POST",
+            url:url,
+            contentType:"application/json;",
+            data: JSON.stringify(params),
+            success:function (res) {
+                $("#result").html(res);
+            }
+        })
+    }
+
+    //load(封装简化get请求)
+    function doAjaxLoad() {
+        let url="http://localhost/doGet";
+        $("#result").load(url);
+    }
+
+</script>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>活动模块</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div id="app" class="container" style="width: 80%">
+    <h1>The Activity Set Page</h1>
+    <button type="button" class="btn btn-success btn-block"
+            data-toggle="modal" data-target="#myModal">创建活动
+    </button>
+
+    <div class="modal fade "
+         id="myModal"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="myModalLabel">
+            <!--小模态框-->
+        <div class="modal-dialog "
+             role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">创建活动</h4>
+                </div>
+                <div class="modal-body">
+                    <!--在此处添加模态框内容-->
+
+                    <form class="form-horizontal"  method="post">
+                        <div class="form-group">
+                            <label for="titleId" class="col-sm-2 control-label">标题</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  name="title" id="titleId" placeholder="title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryId" class="col-sm-2 control-label">类型</label>
+                            <div class="col-sm-10">
+                                <select id="categoryId" name="category" class="form-control">
+                                    <option value="教育培训">教育培训</option>
+                                    <option value="企业活动">企业活动</option>
+                                    <option value="交友活动">交友活动</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label for="startTimeId" class="col-sm-2 control-label">开始时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form_datetime"
+                                       name="startTime" id="startTimeId" placeholder="start time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="endTimeId" class="col-sm-2 control-label">结束时间</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control form_datetime"
+                                       name="endTime" id="endTimeId" placeholder="end time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remarkId" class="col-sm-2 control-label">备注</label>
+                            <div class="col-sm-10">
+           <textarea type="text" class="form-control"  rows="5" name="remark" id="remarkId">
+            </textarea>
+                            </div>
+                        </div>
+                    </form>
+                <!--底部-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="doSaveObject()">
+                        Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table-condense table table-hover">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>Category</th>
+            <th>StartTime</th>
+            <th>EndTime</th>
+            <th>State</th>
+            <th>Operation</th>
+        </tr>
+        </thead>
+        <tbody id="tbodyId">
+        <tr><td colspan="6">数据正在加载中. ......</td></tr>
+        </tbody>
+    </table>
+</div>
+<script src="/jQuery/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script>
+    //添加活动
+    function doSaveObject(){
+        let url="/activity/doSaveActivity";
+        let params=$("#saveFormId").serialize();//jquery中获取表单数据的一种方式
+        $.post(url,params,function (res) {
+            console.log(res.data);
+            doFindActivitys();
+        })
+    }
+    //查看全部活动
+    function doFindActivitys() {
+        let url ="/activity/doFindActivitys";
+        $.getJSON(url,function (res) {
+
+            let tBody=$("#tbodyId");
+            tBody.empty();//清空原有body内容
+            res.forEach(function (item) {
+                let tr=`<tr>
+                            <td>${item.id}</td>
+                            <td>${item.title}</td>
+                            <td>${item.category}</td>
+                            <td>${item.startTime}</td>
+                            <td>${item.endTime}</td>
+                            <td>${item.state?"有效":"无效"}</td>
+                            <td>删除</td>
+                         </tr>`
+                tBody.append(tr);
+            });
+        });
+    }
+    //调用查看方法
+    doFindActivitys();
+</script>
+</body>
+</html>

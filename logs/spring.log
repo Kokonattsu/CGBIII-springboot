@@ -1,0 +1,25 @@
+2020-10-07 20:06:42.591  INFO 9044 --- [main] com.cy.pj.goods.dao.GoodsDaoTests        : Starting GoodsDaoTests on kokonattsuCP with PID 9044 (started by kokonattsu in F:\zzh\workspace\idea\javasebatis\08-springboot-mybatis)
+2020-10-07 20:06:42.596 DEBUG 9044 --- [main] com.cy.pj.goods.dao.GoodsDaoTests        : Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-07 20:06:42.597  INFO 9044 --- [main] com.cy.pj.goods.dao.GoodsDaoTests        : No active profile set, falling back to default profiles: default
+2020-10-07 20:06:42.850  INFO 9044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-10-07 20:06:42.859  INFO 9044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 JDBC repository interfaces.
+2020-10-07 20:06:42.894  WARN 9044 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.cy]' package. Please check your configuration.
+2020-10-07 20:06:43.376  INFO 9044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-07 20:06:43.498  INFO 9044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-07 20:06:43.570  INFO 9044 --- [main] com.cy.pj.goods.dao.GoodsDaoTests        : Started GoodsDaoTests in 1.17 seconds (JVM running for 2.228)
+2020-10-07 20:06:43.721 DEBUG 9044 --- [main] com.cy.pj.goods.dao.GoodsDao.findGoods   : ==>  Preparing: select * from tb_goods
+2020-10-07 20:06:43.741 DEBUG 9044 --- [main] com.cy.pj.goods.dao.GoodsDao.findGoods   : ==> Parameters: 
+2020-10-07 20:06:43.767 DEBUG 9044 --- [main] com.cy.pj.goods.dao.GoodsDao.findGoods   : <==      Total: 7
+2020-10-07 20:06:43.780  INFO 9044 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-07 20:06:43.788  INFO 9044 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-10-07 20:16:59.055  INFO 8928 --- [main] com.cy.pj.goods.dao.MyBatisTests         : Starting MyBatisTests on kokonattsuCP with PID 8928 (started by kokonattsu in F:\zzh\workspace\idea\javasebatis\08-springboot-mybatis)
+2020-10-07 20:16:59.057 DEBUG 8928 --- [main] com.cy.pj.goods.dao.MyBatisTests         : Running with Spring Boot v2.3.4.RELEASE, Spring v5.2.9.RELEASE
+2020-10-07 20:16:59.057  INFO 8928 --- [main] com.cy.pj.goods.dao.MyBatisTests         : No active profile set, falling back to default profiles: default
+2020-10-07 20:16:59.408  INFO 8928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-10-07 20:16:59.422  INFO 8928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 JDBC repository interfaces.
+2020-10-07 20:16:59.475  WARN 8928 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.cy]' package. Please check your configuration.
+2020-10-07 20:16:59.987  INFO 8928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-07 20:17:00.111  INFO 8928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-07 20:17:00.183  INFO 8928 --- [main] com.cy.pj.goods.dao.MyBatisTests         : Started MyBatisTests in 1.355 seconds (JVM running for 2.11)
+2020-10-07 20:17:00.341  INFO 8928 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-10-07 20:17:00.347  INFO 8928 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
